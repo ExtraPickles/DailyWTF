@@ -1,0 +1,8 @@
+﻿Define Rule {rock paper scissors}.
+Rule has variant {FVF}.
+Rule has Options {rock}, {paper}, and {scissors}.
+Option is chosen by RandomChoice(3):
+    1 -> {paper};
+    2 -> {rock};
+    3 -> {scissors}.
+Rule {rock paper scissors} complete.

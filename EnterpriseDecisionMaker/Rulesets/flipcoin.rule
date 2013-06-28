@@ -1,0 +1,6 @@
+﻿Define Rule {flip coin}.
+Rule has variants {HFM}, {FVF}, and {ISO1843}.
+Rule has Options {heads} and {tails}.
+Option is chosen by RandomChoice(2):
+	Map by Index.
+Rule {flip coin} complete.

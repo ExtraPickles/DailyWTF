@@ -1,0 +1,10 @@
+c:\users\shamrockman\documents\visual studio 2010\Projects\EnterpriseDecisionMaker\EnterpriseDecisionMaker\bin\Debug\EnterpriseDecisionMaker.exe
+c:\users\shamrockman\documents\visual studio 2010\Projects\EnterpriseDecisionMaker\EnterpriseDecisionMaker\bin\Debug\EnterpriseDecisionMaker.pdb
+c:\users\shamrockman\documents\visual studio 2010\Projects\EnterpriseDecisionMaker\EnterpriseDecisionMaker\obj\x86\Debug\ResolveAssemblyReference.cache
+c:\users\shamrockman\documents\visual studio 2010\Projects\EnterpriseDecisionMaker\EnterpriseDecisionMaker\obj\x86\Debug\EnterpriseDecisionMaker.exe
+c:\users\shamrockman\documents\visual studio 2010\Projects\EnterpriseDecisionMaker\EnterpriseDecisionMaker\obj\x86\Debug\EnterpriseDecisionMaker.pdb
+C:\Users\Shamrockman\Documents\GitHub\DailyWTF\EnterpriseDecisionMaker\obj\x86\Debug\EnterpriseDecisionMaker.exe
+C:\Users\Shamrockman\Documents\GitHub\DailyWTF\EnterpriseDecisionMaker\obj\x86\Debug\EnterpriseDecisionMaker.pdb
+C:\Users\Shamrockman\Documents\GitHub\DailyWTF\EnterpriseDecisionMaker\bin\Debug\EnterpriseDecisionMaker.exe
+C:\Users\Shamrockman\Documents\GitHub\DailyWTF\EnterpriseDecisionMaker\bin\Debug\EnterpriseDecisionMaker.pdb
+C:\Users\Shamrockman\Documents\GitHub\DailyWTF\EnterpriseDecisionMaker\obj\x86\Debug\ResolveAssemblyReference.cache

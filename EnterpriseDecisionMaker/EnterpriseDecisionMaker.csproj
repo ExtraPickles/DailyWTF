@@ -1,0 +1,96 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{331E53FA-01D5-405E-B53A-7181734965F5}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>EnterpriseDecisionMaker</RootNamespace>
+    <AssemblyName>EnterpriseDecisionMaker</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.JScript" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="index.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="favicon.ico" />
+    <EmbeddedResource Include="jquery.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="images\animated-overlay.gif" />
+    <EmbeddedResource Include="images\ui-bg_diagonals-thick_18_b81900_40x40.png" />
+    <EmbeddedResource Include="images\ui-bg_diagonals-thick_20_666666_40x40.png" />
+    <EmbeddedResource Include="images\ui-bg_flat_10_000000_40x100.png" />
+    <EmbeddedResource Include="images\ui-bg_glass_100_f6f6f6_1x400.png" />
+    <EmbeddedResource Include="images\ui-bg_glass_100_fdf5ce_1x400.png" />
+    <EmbeddedResource Include="images\ui-bg_glass_65_ffffff_1x400.png" />
+    <EmbeddedResource Include="images\ui-bg_gloss-wave_35_f6a828_500x100.png" />
+    <EmbeddedResource Include="images\ui-bg_highlight-soft_100_eeeeee_1x100.png" />
+    <EmbeddedResource Include="images\ui-bg_highlight-soft_75_ffe45c_1x100.png" />
+    <EmbeddedResource Include="images\ui-icons_222222_256x240.png" />
+    <EmbeddedResource Include="images\ui-icons_228ef1_256x240.png" />
+    <EmbeddedResource Include="images\ui-icons_ef8c08_256x240.png" />
+    <EmbeddedResource Include="images\ui-icons_ffd27a_256x240.png" />
+    <EmbeddedResource Include="images\ui-icons_ffffff_256x240.png" />
+    <EmbeddedResource Include="jquery-ui-1.10.3.min.css" />
+    <EmbeddedResource Include="jquery-ui-1.10.3.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="images\ajax-loader.gif" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Rulesets\dice.rule" />
+    <EmbeddedResource Include="Rulesets\flipcoin.rule" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Rulesets\rockpaper.rule" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

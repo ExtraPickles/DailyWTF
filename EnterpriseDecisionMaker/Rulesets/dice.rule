@@ -1,0 +1,9 @@
+﻿Define Rule {roll dice}.
+Rule has variants {RFC1149_5}
+Rule has Options {1}, {2}, {3}, {4}, {5}, and {6}
+Option is chosen by RandomChoice(6): 
+  When variant is {RFC1149_5}:
+    Any => {4};
+  Otherwise:
+    Map by Index.
+Rule {roll dice} complete.

@@ -1,0 +1,243 @@
+﻿<html>
+    <head>
+        <title>Enterprise Decision Execution Engine</title>
+        <link type="text/css" href="jquery-ui-1.10.3.min.css" rel="stylesheet" />
+            
+        <style type="text/css">
+            .hidden{display:none}
+        </style>
+    </head>
+    <body>
+        <div id="loading" class="ui-widget ui-widget-content ui-corner-all" style="width: 50%; text-align: center; margin-right: auto; margin-left: auto; margin-top:auto; margin-bottom: auto; vertical-align: middle;"><span>Loading Enterprise Decision Execution Engine modules...</span> <br /><img alt="loading..." src="images/ajax-loader.gif" style="margin-right: auto;margin-left: auto"/></div>
+        <div class="hidden ui-widget ui-corner-all" id="main" title="Enterprise Decision Execution Engine Request Form">
+            <table style="width: 100%">
+                <tr style="width: 100%"><td>Agenda: </td><td colspan="2">
+                                                             <textarea id="agenda" rows="12" placeholder="Enter subject matter to have a decision made here" style="font-family: monospace; font-size: smaller; width: 100%" > </textarea>
+                                                         </td></tr>
+                <tr><td>Rule: </td><td><select id="ruleSet"></select></td><td>Variant: </td><td><select id="variantSet"></select></td></tr>
+              <!--  <tr class="ui-helper-hidden"><td>Decision</td><td colspan="2"><span id="decision" ></span></td></tr>-->
+            </table>
+        </div>
+        <div class="ui-widget ui-widget-content ui-corner-all hidden" style="width: 25%; height: 100%; float: left" id="MainMenuCont">
+            <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix" style="text-align: center"><div class="ui-dialog-title">Main Menu</div></div>
+            <div id="menuMain" style="height: 100%">
+                <h3>Accessories</h3>
+                <div>
+                    <button id="buttonCalculatorLaunch">Calculator</button><br/>
+                    <button id="buttonNote_PaperLaunch">Note Paper</button><br/>
+                    <button id="buttonDrawingLaunch">Diagram Creator</button><br/>
+                </div>
+                <h3>Enterprise Decision Maker</h3>
+                <div>
+                    <button id="buttonDecision_Submision_FormLaunch">Decision Submission Form</button><br/>
+                    <!-- Out of scope for phase 1 <button id="buttonDecisionRulesetEditorLaunch">Decision Ruleset Editor</button><br/>  -->
+                </div>
+            </div>
+        </div>
+        
+        
+        <div title="Enterprise Calculation Request Form" class="hidden" id="calcForm" style="float: right; width: 70%">
+            <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix" style="text-align: center">
+                <div class="ui-dialog-title">Enterprise Calculation Request Form</div>
+            </div>
+            
+            <table style="width: 100%">
+                <tr style="width: 100%"><td style="text-align: right">Request/Result</td><td colspan="2" style="width: 100%"><input id="calcResult" style="width: 100%"/></td></tr>
+                <tr><td><button id="b1" class="ui-calc-button">1</button></td><td><button id="Button2" class="ui-calc-button">2</button></td><td><button id="Button3" class="ui-calc-button">3</button></td><td><button id="b%25" class="ui-calc-button">%</button></td></tr>
+                <tr><td><button id="Button4" class="ui-calc-button">4</button></td><td><button id="Button5" class="ui-calc-button">5</button></td><td><button id="Button6" class="ui-calc-button">6</button></td><td><button id="Button%2A" class="ui-calc-button">*</button></td></tr>
+                <tr><td><button id="Button7" class="ui-calc-button">7</button></td><td><button id="Button8" class="ui-calc-button">8</button></td><td><button id="Button9" class="ui-calc-button">9</button></td><td><button id="Button%2F" class="ui-calc-button">/</button></td></tr>
+                <tr><td><button id="Button%2B" class="ui-calc-button">+</button></td><td><button id="b0" class="ui-calc-button">0</button></td><td><button id="Button-" class="ui-calc-button">-</button></td><td><button id="Button%2E" class="ui-calc-button">.</button></td></tr>
+                <tr><td><button id="submitCalc">Submit Calculation Request</button></td></tr>
+            </table>
+        </div>
+        
+        <div title="Enterprise Diagram Creator" class="hidden" id="DiagramForm" style="float: right; width: 70%">
+            <canvas width="640" height="480" id="DrawingArea" style="border: 1px black solid"></canvas>
+            <img alt="Area containing graphics"  style="width: 640px; height: 480px; border: 1px solid black; display: none" src="/DrawingFormImage.jpg"/>
+            <table>
+                <tr>
+                    <td><button id="buttonBox" class="ui-draw-button">Box</button></td>
+                    <td><button class="ui-draw-button" id="buttonLine">Line</button></td>
+                    <td><input type="color" id="colorPicker" value="#FF0000"/></td>
+                    <id><button id="drawUndude">Undo</button></id>
+                </tr>
+            </table>
+        </div>
+        
+        <div title="Enterprise Text Storage" class="hidden" id="Div1" style="float: right; width: 70%">
+            <div class="ui-dialog-titlebar ui-widget-header ui-corner-all ui-helper-clearfix" style="text-align: center">
+                <div class="ui-dialog-title">Enterprise Text Storage</div>
+            </div>
+            <textarea id="textarea1" style="width: 100%; height: 100%" onchange="localStorage.Notepad = $('#textarea1').val()"></textarea>
+        </div>
+    </body>
+    <script type="text/javascript" src="/jquery.js"></script>
+        <script type="text/javascript" src="/jquery-ui-1.10.3.min.js"></script>
+
+        <script type="text/javascript" >
+            $(function () {
+
+                function SuperPig(doesWhatSuperPigDoes, becauseitssuperpig) {
+                    var threelittlepiggies = new Image();
+                    threelittlepiggies.onload = function () { document.getElementById(becauseitssuperpig).getContext("2d").drawImage(threelittlepiggies, 0, 0); };
+                    threelittlepiggies.src = doesWhatSuperPigDoes;
+                }
+
+                setTimeout(function () {
+                    //Wait for modules to load
+                    $("#loading").hide();
+                    $('#buttonBox').button({});
+                    $('#buttonLine').button({});
+
+                    $('#MainMenuCont').show();
+                    $("#menuMain").accordion({});
+                    $("#buttonCalculatorLaunch").button({}).click(function () { $("#calcForm").toggleClass("hidden"); });
+                    $("#buttonNote_PaperLaunch").button({});
+                    $("#buttonDrawingLaunch").button({});
+                    $("#buttonDecision_Submision_FormLaunch").button({});
+                    $("#buttonDecisionRulesetEditorLaunch").button({});
+                    $(".ui-calc-button").button({}).click(function () {
+                        $("#calcResult").val($("#calcResult").val() + decodeURIComponent(this.id.replace("Button", "").replace("b", "")));
+                    });
+
+                    $("#calcResult").val("");
+                    $('#submitCalc').button({});
+                    $('#buttonNote_PaperLaunch').click(function () {
+                        $("#Div1").toggleClass("hidden");
+                    });
+                    $("#drawUndude").button({}).click(function oooohya() {
+                        $.ajax({  //This is for undo support
+                            url: "/UndoPicture",
+                            dataType: "text",
+                            data: localStorage.SUPER,
+                            success: function (data, textStatus) {
+                                SuperPig(data, "DrawingArea");
+                            }
+                        });
+
+                    });
+                    $('#submitCalc').click(function () {
+                        $.ajax({
+                            url: "/ExecuteCalculation",
+                            dataType: "text",
+                            data: $("#calcResult").val(),
+                            success: function (data, textStatus) {
+                                $("#calcResult").val(data);
+                            }
+                        });
+                    });
+                    $(".ui-draw-button").click(function () {
+                        localStorage.p1 = decodeURIComponent(this.id.replace("button", ""));
+                    });
+                    $("#buttonDrawingLaunch").click(function () {
+                        $("#DiagramForm").toggleClass("hidden");
+                    });
+                    $("#DrawingArea").mousedown(function (d) {
+                        localStorage.d = JSON.stringify({ clientX: d.clientX - $("#DrawingArea").offset().left, clientY: d.clientY - $("#DrawingArea").offset().top });
+                    });
+
+                    var selfy = document.getElementById("DrawingArea").getContext("2d");
+                    selfy.drawImage(document.getElementById("DrawingArea"), 0, 0);
+
+                    $("#DrawingArea").mouseup(function (ll) {
+                        var l1 = JSON.parse(localStorage.d);
+
+                        var self = document.getElementById("DrawingArea").getContext("2d");
+                        self.fillStyle = $("#colorPicker").val();
+                        if (localStorage.p1.toLowerCase() === "box")
+                            self.fillRect(l1.clientX, l1.clientY, ll.clientX - l1.clientX - $("#DrawingArea").offset().left, ll.clientY - l1.clientY - $("#DrawingArea").offset().top);
+                        else {
+                            self.beginPath();
+                            self.moveTo(Math.abs(ll.clientX - l1.clientX - $("#DrawingArea").offset().left), Math.abs(ll.clientY - l1.clientY - $("#DrawingArea").offset().top));
+                            self.lineTo(Math.abs(l1.clientX), Math.abs(l1.clientY));
+
+                            self.stroke();
+                        }
+
+                        localStorage.SUPER = document.getElementById("DrawingArea").toDataURL("image/jpeg", Math.random()); //keep hackers from guessing
+                        self.fillStyle = "#FFF";
+                        self.clearRect(0, 0, 640, 480);
+                        $.ajax({  //This is for undo support
+                            url: "/SuperPicture",
+                            dataType: "text",
+                            data: localStorage.SUPER,
+                            success: function (data, textStatus) {
+
+                            }
+                        });
+                        SuperPig(localStorage.SUPER, "DrawingArea");
+                    });
+
+                    if (localStorage.Notepad) {
+                    } else {
+                        localStorage.Notepad = "";
+                    }
+
+                    $("#textarea1").val(localStorage.Notepad);
+
+                    $.ajax("/Users", { success: function (data) {
+
+                        data = 3;
+                    }
+                    });
+                    if (localStorage.SUPER) {
+                        var pork = document.getElementById("DrawingArea").getContext("2d");
+                        var bumcover = new Image();
+                        bumcover.onload = function () {
+                            pork.drawImage(bumcover, 0, 0);
+                        };
+
+                        bumcover.src = localStorage.SUPER;
+                    }
+
+                    function onChange() {
+                        var data24 = $.parseJSON(localStorage.uber43);
+                        $("#variantSet").empty();
+                        $("#variantSet").append("<option>Normal</option>");
+                        for (var i = 0; i < data24.length; i++) {
+
+                            for (var data3 in data24[i]) {
+                                if (data3.replace(/\_/g, ' ') == $("#ruleSet").val()) {
+                                    for (var d = 0; d < data24[i][data3].length; d++) {
+                                        $("#variantSet").append("<option>" + data24[i][data3][d] + "</option>");
+                                    }
+                                }
+                            }
+                        }
+                    }
+
+                    $.ajax("/GetRules", { success: function (data) {
+                        localStorage.uber43 = data;
+                        var data2 = $.parseJSON(data);
+                        for (var file_not_found = 0; file_not_found < data2.length; file_not_found++)
+                            for (var data3 in data2[file_not_found])
+                                $("#ruleSet").append("<option>" + data3.replace(/\_/g, ' ') + "</option>");
+                        onChange();
+                    }
+                    });
+
+                    $("#ruleSet").change(function () { onChange(); });
+
+                    $("#buttonDecision_Submision_FormLaunch").click(function () {
+                        $("#main").dialog({
+                            autoOpen: true,
+                            height: 480,
+                            width: 640,
+                            modal: true,
+                            buttons: {
+                                "Request Decision": function () {
+
+                                    $.ajax("/GetDecision", { data: { agenda: $("#agenda").val(), rule: $("#ruleSet").val(), variant: $("#variantSet").val() }, success: function (result) {
+                                        alert(result);
+                                        //$("body")[0].innerText = ;
+                                    }
+                                    });
+                                }
+                            }
+                        });
+                    });
+                }, 100);
+            });
+
+        </script>
+</html>
