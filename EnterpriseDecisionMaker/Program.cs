@@ -439,7 +439,7 @@ namespace EnterpriseDecisionMaker
                                 }
                                 f.Seek(0, SeekOrigin.Begin);
                                 var br = new BinaryReader(f);
-                                int l = Convert.ToInt32(f.Length);
+                                int l = f.Length.ToString().MakeItSo<int>();
                                 byte[] bts = br.ReadBytes(l);
 
                                 byte[] head =
@@ -482,8 +482,8 @@ namespace EnterpriseDecisionMaker
 
         private static string DoIt4(string name, string[] code, string variant)
         {
-            int count = Convert.ToInt32(code[3].Replace("Option is chosen by RandomChoice(", "").Replace("):", ""));
-            int random = Convert.ToInt32(Math.Floor((Math.Sin(DateTime.Now.Ticks/426.55) + 1)/2*count)) + 1;
+            int count = (code[3].Replace("Option is chosen by RandomChoice(", "").Replace("):", "")).MakeItSo<int>();
+            int random = ((Math.Floor((Math.Sin(DateTime.Now.Ticks/426.55) + 1)/2*count)) + 1).ToString(CultureInfo.InvariantCulture).MakeItSo<int>();
 
             bool variantMode = false;
             for (uint i = 4; i < code.Length; i++)
