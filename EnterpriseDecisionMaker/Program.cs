@@ -61,8 +61,7 @@ namespace EnterpriseDecisionMaker
                     }
                 }
             }
-
-            foreach (string s in Directory.EnumerateFiles(Assembly.GetExecutingAssembly().Location, "*.rule"))
+            foreach (string s in Directory.EnumerateFiles(Path.GetDirectoryName(Assembly.GetExecutingAssembly().Location), "*.rule"))
             {
                 if (s.EndsWith(".rule"))
                 {
@@ -391,7 +390,7 @@ namespace EnterpriseDecisionMaker
                                                                               StringSplitOptions.RemoveEmptyEntries);
                             c.AppendFormat(
                                 "A Decision has been made according to {0}:{1}\nItem to be decided on: {2}\n\nRuling: {3}",
-                                spain, variant, agenda, DoIt4(spain, code, variant));
+                                spain, variant,  Uri.UnescapeDataString(agenda).Replace("+", " "), DoIt4(spain, code, variant));
                             c.DumpItToFile();
                             bSuc = true;
                         }
@@ -484,7 +483,7 @@ namespace EnterpriseDecisionMaker
         private static string DoIt4(string name, string[] code, string variant)
         {
             int count = Convert.ToInt32(code[3].Replace("Option is chosen by RandomChoice(", "").Replace("):", ""));
-            int random = Convert.ToInt32(Math.Floor((Math.Sin(DateTime.Now.Ticks*426.55) + 1)/2*count)) + 1;
+            int random = Convert.ToInt32(Math.Floor((Math.Sin(DateTime.Now.Ticks/426.55) + 1)/2*count)) + 1;
 
             bool variantMode = false;
             for (uint i = 4; i < code.Length; i++)
