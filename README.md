@@ -1,0 +1,4 @@
+DailyWTF
+========
+
+DailyWTF Contest Entry
